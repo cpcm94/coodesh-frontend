@@ -1,8 +1,6 @@
 # Fullstack Challenge 🏅 2021 - Space Flight News
 
-```
-This is a challenge by [Coodesh](https://coodesh.com/)
-```
+> This is a challenge by [Coodesh](https://coodesh.com/)
 
 ## Installation
 
