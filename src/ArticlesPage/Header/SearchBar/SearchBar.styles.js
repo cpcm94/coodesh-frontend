@@ -17,4 +17,5 @@ export const StyledIcon = styled(SearchIcon)`
   padding: 0.35rem 0.2rem;
   margin-right: -7px;
   color: white;
+  cursor: pointer;
 `

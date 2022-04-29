@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Articles } from './Articles/Articles'
 import { Container } from './Container'
 import { Header } from './Header/Header'
+import { LogoAndTitle } from './LogoAndTitle/LogoAndTitle'
 import { onLoadMore } from './onLoadMore'
 
 const articlesEndpointUrl =
@@ -14,7 +16,7 @@ export const ArticlesPage = () => {
   })
   const [latestArticleFirst, setLatestArticleFirst] = useState(true)
   const [searchString, setSearchString] = useState('')
-  // const [inputText, setInputText] = useState('')
+  const [isLoading, setLoading] = useState(false)
 
   const orderUrlQuery = !latestArticleFirst ? `?order=asc` : ''
   const searchUrlQuery =
@@ -43,32 +45,11 @@ export const ArticlesPage = () => {
   }
 
   const onSearch = (searchString) => {
-    console.log('searchString', searchString)
     setSearchString(searchString)
   }
-  console.log('search', searchString)
-  console.log('article', articleData)
-  // const handleChange = (e) => {
-  //   setInputText(e.target.value)
-  // }
 
   return (
     <Container>
-      <button
-        onClick={() =>
-          onLoadMore(
-            articleData,
-            currentPage,
-            setCurrentPage,
-            setArticleData,
-            latestArticleFirst,
-            searchString,
-            articlesEndpointUrl
-          )
-        }
-      >
-        more articles
-      </button>
       <Header
         onSearch={(text) => onSearch(text)}
         onOrderByChange={(showLatestFirst) =>
@@ -76,11 +57,23 @@ export const ArticlesPage = () => {
         }
         latestArticleFirst={latestArticleFirst}
       />
-      {/* <button onClick={() => onOrderByDateChange()}>date of articles</button>
-      <input type='text' value={inputText} onChange={handleChange} />
-      <button onSearch={(text) => onSearch(text)}>Search</button> */}
-      {/* <Header/>
-        <Articles /> */}
+      <LogoAndTitle />
+      <Articles
+        onLoadMore={() =>
+          onLoadMore(
+            articleData,
+            currentPage,
+            setCurrentPage,
+            setArticleData,
+            latestArticleFirst,
+            searchString,
+            articlesEndpointUrl,
+            setLoading
+          )
+        }
+        articles={articleData}
+        isLoading={isLoading}
+      />
     </Container>
   )
 }

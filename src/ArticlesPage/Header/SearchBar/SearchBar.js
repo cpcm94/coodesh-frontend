@@ -10,7 +10,10 @@ export const SearchBar = ({ onSearch }) => {
   }
 
   return (
-    <FormControl sx={{ width: '17.5rem' }} variant='outlined'>
+    <FormControl
+      sx={{ width: '17.5rem', marginRight: '1.5rem' }}
+      variant='outlined'
+    >
       <InputLabel sx={{ marginTop: '-0.35rem' }}>Search</InputLabel>
       <StyledInput
         type='text'
@@ -23,7 +26,6 @@ export const SearchBar = ({ onSearch }) => {
             </StyledIcon>
           </InputAdornment>
         }
-        label='Search'
       />
     </FormControl>
   )

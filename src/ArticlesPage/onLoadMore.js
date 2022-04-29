@@ -5,9 +5,12 @@ export const onLoadMore = (
   setArticleData,
   latestArticleFirst,
   searchString,
-  articlesEndpointUrl
+  articlesEndpointUrl,
+  setLoading
 ) => {
   if (!currentPage.nextPageExists) return
+
+  setLoading(true)
 
   fetch(
     `${articlesEndpointUrl}?page=${currentPage.pageNumber + 1}${
@@ -22,5 +25,6 @@ export const onLoadMore = (
         pageNumber: json.current_page,
         nextPageExists: !!json.next_page_url,
       })
+      setLoading(false)
     })
 }

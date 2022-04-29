@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
-export const TopHeader = styled.div`
+export const HeaderWrapper = styled.div`
   display: flex;
+  flex-direction: row-reverse;
 `
